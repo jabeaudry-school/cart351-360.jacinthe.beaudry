@@ -1,0 +1,19 @@
+{
+  "name": "jacinthe.beaudry.cart351",
+  "version": "1.0.0",
+  "description": "This is my website for the cart 351 class taken during the Fall 2020 semester under the teacher Sabine Rosenberg.",
+  "main": "index.js",
+  "scripts": {
+    "test": "error"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jabeaudry/cart351.jacinthe.beaudry.git"
+  },
+  "author": "Jacinthe Beaudry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jabeaudry/cart351.jacinthe.beaudry/issues"
+  },
+  "homepage": "https://github.com/jabeaudry/cart351.jacinthe.beaudry#readme"
+}
