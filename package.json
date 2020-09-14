@@ -4,7 +4,8 @@
   "description": "This is my website for the cart 351 class taken during the Fall 2020 semester under the teacher Sabine Rosenberg.",
   "main": "index.js",
   "scripts": {
-    "test": "error"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/jabeaudry/cart351.jacinthe.beaudry/issues"
   },
-  "homepage": "https://github.com/jabeaudry/cart351.jacinthe.beaudry#readme"
+  "homepage": "https://github.com/jabeaudry/cart351.jacinthe.beaudry#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.12",
+    "gulp": "^4.0.2"
+  }
 }
