@@ -13,6 +13,7 @@ h2 {
     font-family: 'Pacifico', cursive;
     position: relative;
     z-index: 30;
+    text-decoration: underline;
 }
 
 .link {
@@ -73,28 +74,28 @@ h2 {
     }
 .fifty-one-container {
     background-color: #ee5b30;
-    width: 35%;
+    width: 25%;
     height: 30%;
     border-color: #f8ebbe;
     border-width:10px;
     border-radius: 15%;
-    border-style: solid;
+    border-style: groove;
     padding: 1%;
     margin: 2%;
     text-align: center;
     font-size: 130%;
     z-index: 10;
-    background-image: url("imgs/score.1.png");
+    background-image: url("../imgs/score.1.png");
 }
 
 .sixty-container {
     background-color: #ee5b30;
-    width: 30%;
+    width: 23%;
     height: 25%;
     border-color: #f8ebbe;
     border-width: 10px;
     border-radius: 15%;
-    border-style: solid;
+    border-style: groove;
     padding: 1%;
     margin: 2%;
     bottom: 0px;
@@ -197,6 +198,39 @@ transform: rotate(30deg);
     width: 23%;
     height: auto;
     transform: rotate(289deg);   
+}
+
+#arrow5 {
+    z-index: 10;
+    width: 43%;
+    opacity: 18%;
+    height: auto;
+    transform: rotate(47deg);
+    bottom: 35%;
+    left: 65%;
+    position: absolute;
+}
+
+#arrow6 {
+    z-index: 10;
+    width: 43%;
+    opacity: 14%;
+    height: auto;
+    transform: rotate(0deg);
+    bottom: 23%;
+    right: 78%;
+    position: absolute;
+}
+
+#arrow7 {
+    z-index: 10;
+    width: 35%;
+    opacity: 14%;
+    height: auto;
+    transform: rotate(180deg);
+    bottom: 45%;
+    right: 36%;
+    position: absolute;
 }
 
 .bowlball {
