@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+/*background*/
 body {
 background-color: #231f20;
 overflow: hidden;
@@ -9,14 +10,6 @@ margin: auto;
 text-decoration: none;
 
 }
-
-h2 {
-    font-family: 'Pacifico', cursive;
-    position: relative;
-    z-index: 30;
-    text-decoration: underline;
-}
-
 
 .main {
     background-color: #80caef;
@@ -34,6 +27,8 @@ h2 {
     
 }
 
+
+/*bowling alley floor*/ 
 .floor {
     width: 110%;
     height: 100%;
@@ -68,6 +63,16 @@ h2 {
         clip-path: polygon(0px 89%, 110% 10%, 110% 10%, 0px 115%);
         background-color: #231f20;
     }
+
+/*class boxes*/
+
+h2 {
+    font-family: 'Pacifico', cursive;
+    position: relative;
+    z-index: 30;
+    text-decoration: underline;
+}
+
 .fifty-one-container {
     background-color: #ee5b30;
     width: 25%;
@@ -103,6 +108,13 @@ h2 {
     background-image: url("../imgs/score.1.png");
 }
 
+/*links*/
+
+mark {
+    background-color: #ee5b30;
+    color: #231f20;
+}
+
 .link-list {
     display: flex;
     justify-content: center;
@@ -127,10 +139,8 @@ a mark:hover {
     color: #f8ebbe;
 }
 
-mark {
-    background-color: #ee5b30;
-    color: #231f20;
-  }
+
+/*bowling pins and arrows and ball*/
 
 .bowl-pin {
     width: 9%;
