@@ -108,6 +108,9 @@ h2 {
     justify-content: center;
     flex-direction: column;
     z-index: 45;
+    position: relative;
+    margin: auto;
+    width: 100%;
 }
 
 .link {
