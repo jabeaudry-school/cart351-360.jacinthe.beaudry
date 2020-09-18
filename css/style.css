@@ -35,8 +35,6 @@ text-decoration: none;
     z-index: 30;
     clip-path: polygon(0px 90%, 110% 10px, 110% 10%, 0px 115%);
     margin-left: -10%;
-   
-    
 }
 
 .floor-container {
@@ -48,7 +46,6 @@ text-decoration: none;
     margin: auto;
     z-index: 25;
     object-fit: fill;
-
 }
 
 .shadow {
