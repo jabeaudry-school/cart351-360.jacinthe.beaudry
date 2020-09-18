@@ -25,7 +25,7 @@ h2 {
     height: 94%;
     margin: auto;
     border-radius: 25px;
-    z-index: 10;
+    z-index: 3;
     top: 3%;
     left: 3%;
     position: absolute;
@@ -51,7 +51,7 @@ h2 {
     height: 110%;
     overflow: visible;
     margin: auto;
-    z-index: 30;
+    z-index: 25;
     object-fit: fill;
 
 }
@@ -63,7 +63,7 @@ h2 {
         height: 110%;
         overflow: visible;
         margin: auto;
-        z-index: 28;
+        z-index: 24;
         object-fit: fill;
         clip-path: polygon(0px 89%, 110% 10%, 110% 10%, 0px 115%);
         background-color: #231f20;
@@ -80,7 +80,7 @@ h2 {
     margin: 2%;
     text-align: center;
     font-size: 130%;
-    z-index: 10;
+    z-index: 28;
     background-image: url("../imgs/score.1.png");
 }
 
@@ -99,7 +99,7 @@ h2 {
     position: absolute;
     text-align: center;
     font-size: 128%;
-    z-index: 10;
+    z-index: 28;
     background-image: url("../imgs/score.1.png");
 }
 
@@ -116,10 +116,15 @@ h2 {
 .link {
     font-family: 'Courier New', Courier, monospace;
     z-index: 89;
+    position: relative;
 }
 
 a:link {
     text-decoration: none;
+}
+
+a mark:hover {
+    color: #f8ebbe;
 }
 
 mark {
