@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <title> EXERCISE 1A TEMPLATE - CART 351 2020 </title>
+  <meta charset="UTF-8">
+  <style>
+  #c {
+      background-color: #3e181b;
+      border: 3px solid #db1d2d;}
+
+  #d {
+      background-color: #422018;
+      border: 3px solid #f0421c;}
+
+  #e {
+      background-color: #45391b;
+      border: 3px solid #fec02d;}
+
+  body{
+        background:black;
+      }
+
+  .para {color:white;font-size:22pt; background:purple;margin-left: 1%;margin-top: 1%; padding:1%;}
+
+      .box {
+      width: 10vw; /*(1/10th) viewport width */
+      height: 10vw;
+      margin-left: 1%;
+      margin-top: 1%;
+      display:inline-block;
+      opacity: 1;
+    }
+  .wrapper{
+    margin-left:30%;
+    margin-top:15%;
+  }
+  </style>
+  <script>
+
+    //code based on class notes (cart351) clab.concordia.ca/cart-351-introduction-to-javascript/
+  window.onload = function(){
+
+    let handleClick = function() {
+      if (event.target == paragraph) {  //clicking on text
+        document.getElementById("displayText").innerHTML = "";
+      }
+      else {   //clicking on box
+        document.getElementById("displayText").innerHTML = "This is Text For Box " + this.id;
+      }
+    }; 
+
+    let handlemouseOver = function(event) {  //hovering over a box
+      event.target.style.opacity = "0.5";
+    };
+
+    let handlemouseOut = function() {  //mouse leaving a box
+      event.target.style.opacity = "1";
+    };
+    
+    //when the box elements are clicked, hovered or left alone
+    let cBox = document.getElementById('c');
+    cBox.addEventListener('click', handleClick);
+    cBox.addEventListener('mouseover', handlemouseOver);
+    cBox.addEventListener('mouseout', handlemouseOut);
+
+    let dBox = document.getElementById('d');
+    dBox.addEventListener('click', handleClick);
+    dBox.addEventListener('mouseover', handlemouseOver);
+    dBox.addEventListener('mouseout', handlemouseOut);
+
+    let eBox = document.getElementById('e');
+    eBox.addEventListener('click', handleClick);
+    eBox.addEventListener('mouseover', handlemouseOver);
+    eBox.addEventListener('mouseout', handlemouseOut);
+
+    //when the text is clicked
+
+    let paragraph = document.getElementById('displayText');
+    paragraph.addEventListener('click', handleClick);
+
+    
+    
+
+  } 
+
+
+  </script>
+
+</head>
+<body>
+  <div class = "wrapper">
+  <div id = "c" class = "box"></div>
+  <div id = "d" class = "box"></div>
+  <div id = "e" class = "box"></div>
+  <br />
+  <p style = "display:inline-block;" id = "displayText" class = "para"></p>
+</div>
+
+</body>
+</html>

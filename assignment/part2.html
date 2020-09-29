@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> EXERCISE 1B TEMPLATE - CART 351 2020 </title>
+  <meta charset="UTF-8">
+  <style>
+
+  .box {
+    width: 40vw; /*(40%) viewport width */
+    height: 40vw;
+    margin-left: 1%;
+    margin-top: 1%;
+    display:inline-block;
+  }
+  #c {
+      background-color: #3e181b;
+      border: 3px solid #db1d2d;
+      }
+
+  #d {
+      background-color: #422018;
+      border: 3px solid #f0421c;
+      }
+
+
+
+  body{background:black;}
+  .wrapper{
+    margin-left:5%;
+    margin-top:5%;
+  }
+
+  canvas{
+    background:black;
+    width:100%;
+    height:100%;
+  }
+  </style>
+  <script>
+
+
+window.onload = function(){
+
+
+let mouseIn = 'none'; // this variable will keep track of when and if the mouse is within one of the canvas(es)
+
+// this event handler will register in which box is the mouse
+ let mouseoverhandler = function(event){
+  mouseIn = event.target.id;
+  console.log("the mouse is over canvas:: "+mouseIn);
+}
+// this event handler will register that the mouse is no longer over a particular box
+let mouseouthandler = function(event){
+  console.log("the mouse is no longer over canvas:: "+event.target.id);
+ mouseIn = 'none';
+}
+
+
+/* canvas and context variables fpr both  drawing surfaces */
+
+//LEFT (red border)
+let canvasAniA = document.getElementById("canvasAniA")
+//get the context
+let contextA = canvasAniA.getContext("2d");
+
+// register event listeners with 1st box
+canvasAniA.addEventListener('mousemove',mouseoverhandler );
+canvasAniA.addEventListener('mouseout',mouseouthandler);
+
+//RIGHT (orange border)
+let canvasAniB = document.getElementById("canvasAniB")
+//get the context
+let contextB = canvasAniB.getContext("2d");
+
+// register event listeners with 2nd box
+canvasAniB.addEventListener('mousemove',mouseoverhandler );
+canvasAniB.addEventListener('mouseout',mouseouthandler);
+
+
+
+      /*** The lists of objects that will be inside each canvas **/
+      let rectList = []; // variable to hold your list of rectangles
+      let ellipsesList = []; //variable to hold your list of ellipses
+
+      /* STEP 1:: BEFORE YOU DO ANTYTHING - OPEN THE PAGE IN YOUR BROWSER AND ENSURE THAT THE MOUSE IS BEING REGISTERED
+      IN THE CORRECT CANVAS (USE THE CONSOLE)
+
+      /* STEP 2:: CREATE 10 RectShapeObject instances and put into the rectList */
+      const MAX_SHAPES = 10;
+      for (let i = 0; i < MAX_SHAPES; i++) {
+        let r = Math.floor(Math.random() * 256);
+        let b = 200;
+        let g = 100;
+        let speedXX = Math.floor(Math.random() * 10) + 1;
+        let speedYY = Math.floor(Math.random() * 3) + 1;
+        let thetaRec = 0;
+        rectList.push(new RectShapeObject(i, i, 60, 30, r, g, b, 1, thetaRec, speedXX, speedYY, contextA,canvasAniA));
+      }
+      /* STEP 3:: CREATE 10 EllipseShapeObject instances and put into the ellipsesList */
+
+      for (let j = 0; j < MAX_SHAPES; j++) {
+        let greenC = 25;
+        let blueC = 60;
+        let redC = Math.floor(Math.random() * 256);
+        let theta = 0;
+        ellipsesList.push(new EllipseShapeObject(j, j, 30, redC, blueC, greenC, 1, contextB, canvasAniB, theta));
+      }
+      /* STEP 4:: implement the display and update methods for each shape
+      (RectShapeObject,EllipseShapeObject)
+      using the Object definitions I have given you as a starting point.
+      The animation and design of your shape(s) is up to you */
+
+      /**** ANIMATION CODE *****************/
+      requestAnimationFrame(animationLoop);
+      /*MAIN ANIMATION LOOP */
+      function animationLoop() {
+        contextA.clearRect(0,0,canvasAniA.width,canvasAniA.height);
+        contextB.clearRect(0,0,canvasAniB.width,canvasAniB.height);
+        if (mouseIn === "canvasAniA") {
+          console.log("over canvas A");
+          // put code here to display and update contents in canvasAniA
+          /* STEP 5:: go through the rectList  and display and update shapes  */
+          for (let i = 0; i < MAX_SHAPES; i++) {
+            rectList[i].display();
+            rectList[i].update();
+            this.thetaRec+=0.02;
+          }
+        } else if (mouseIn === "canvasAniB") {
+          console.log("over canvas B");
+          for (let j = 0; j < MAX_SHAPES; j++) {
+            ellipsesList[j].display();
+            ellipsesList[j].update();
+          }
+
+        }
+
+        requestAnimationFrame(animationLoop);
+      }
+
+      /***** OBJECT DEFINITIONS  ***********************/
+      /* OBJECT DEFINITION FOR A SQUARE OBJECT SHAPE
+      constructor takes an initial xpos, ypos, width and height for the shape.
+      You also need to give the context and canvas associated
+      with the potential instance of this shape
+
+      NB: you can add any methods/variables extra that you want or need 
+      */
+
+
+      function RectShapeObject(x, y, w, h, r, g, b, a, thetaRec, speedXX, speedYY, context, canvas) {
+        this.context = context;
+        this.canvas = canvas;
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.a = a;
+        this.speedXX = speedXX;
+        this.speedYY = speedYY;
+        this.thetaRec = 0;
+
+        // method to display - needs to be filled in
+        this.display = function() {
+          this.col = "rgba(" + this.r + "," + this.g + "," + this.b + "," + this.a + ")";
+          this.context.fillStyle = this.col;
+          this.context.save();
+          this.context.translate(this.x, this.y);
+          this.context.rotate(this.thetaRec);
+          this.context.fillRect(-this.w/2,-this.h/2,this.w,this.h);
+          this.context.restore();
+        }
+        // method to update (animation) - needs to be filled in
+        this.update = function() {
+
+
+          if(this.x>(this.canvas.width-this.w/2)||this.x<0){
+            this.speedXX*=-1;
+          }
+          if(this.y>(this.canvas.height-this.h)||this.y<0){
+              this.speedYY*=-1;
+          }
+
+
+          this.x += this.speedXX;
+          this.y += this.speedYY;
+
+        }
+
+
+      }
+
+      /* OBJECT DEFINITION FOR An Ellipse OBJECT SHAPE
+      constructor takes an initial xpos, ypos, width and height for the shape.
+      You also need to give the context and canvas associated
+      with the potential instance of this shape
+
+      NB: you can add any methods/variables extra that you want or need 
+
+      */
+      function EllipseShapeObject(x, y, rad, redC, blueC, greenC, alphaC, context, canvas) {
+        this.context = context;
+        this.canvas = canvas;
+        this.x = x;
+        this.y = y;
+        this.rad = rad;
+        this.redC = redC;
+        this.greenC = greenC;
+        this.blueC = blueC;
+        this.alphaC = alphaC;
+        this.y = this.canvas.height;
+        this.x = (this.canvas.width - ((this.canvas.width) * (Math.random())));
+        // method to display - needs to be filled in
+        this.display = function() {
+          this.col = "rgba(" + this.redC + "," + this.greenC + "," + this.blueC + "," + this.alphaC + ")";
+          this.context.beginPath();
+          this.context.arc(this.x,this.y,this.rad,0,(2*Math.PI),true); 
+          this.context.fillStyle = this.col;
+          this.context.fill();
+          this.context.closePath();
+        }
+        // method to update (animation) - needs to be filled in
+        this.update = function() {
+          if (this.y < 0) {
+            this.y = this.canvas.height;
+          }
+          else {
+            this.x = this.x;
+            this.y = this.y - 3;
+          }
+
+        }
+      }
+
+    } //on load
+  </script>
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div id = "c" class = "box"><canvas id = "canvasAniA" width ="500" height="500"></canvas></div>
+    <div id = "d" class = "box"><canvas id = "canvasAniB" width ="500" height="500"></canvas></div>
+  </div>
+
+</body>
+
+</html>

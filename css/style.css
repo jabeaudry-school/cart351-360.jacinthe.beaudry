@@ -120,6 +120,7 @@ mark {
     position: relative;
     margin: auto;
     width: 100%;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .link {
@@ -265,4 +266,13 @@ transform: rotate(30deg);
     top: 29%;
     left: 62%;
     z-index: 56;
+}
+
+.exer-links {
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 30%;
+    margin: auto;
 }
